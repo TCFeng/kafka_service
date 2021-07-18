@@ -1,0 +1,33 @@
+plugins {
+    // Apply the application plugin to add support for building a CLI application in Java.
+    id 'application'
+}
+
+ext {
+        avroVersion = '1.8.2'
+        kafkaVersion = '2.8.0'
+        confluentVersion = '5.0.0'
+}
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+    maven { url 'https://packages.confluent.io/maven/'}
+}
+
+dependencies {
+    // Use JUnit test framework.
+    testImplementation 'junit:junit:4.13.2'
+
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:30.1-jre'
+    implementation "org.apache.avro:avro:$avroVersion"
+    implementation "org.apache.kafka:kafka-clients:$kafkaVersion"
+    implementation "io.confluent:kafka-avro-serializer:$confluentVersion"
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.9'
+}
+
+application {
+    // Define the main class for the application.
+    // mainClass = 'com.tcfeng.sa.App'
+}
